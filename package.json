@@ -1,0 +1,51 @@
+{
+  "name": "@uniformdev/optimize-starter-sanity-next",
+  "version": "10.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "run-s generate dev:next",
+    "dev:next": "next dev -p 4120",
+    "build": "run-s generate build:next",
+    "build:next": "next build",
+    "export": "next export",
+    "generate": "run-p generate:slug-page generate:intents",
+    "generate:intents": "uniform optimize manifest download --output ./lib/intentManifest.json",
+    "generate:slug-page": "node ./scripts/copySlugPage.js",
+    "start": "next start -p 4120",
+    "ci:build": "npm run generate && next build && next export",
+    "ci:build:ssr": "cross-env NEXT_USE_SSR=1 run-s generate build"
+  },
+  "dependencies": {
+    "@analytics/google-analytics": "^0.5.3",
+    "@analytics/segment": "^1.1.0",
+    "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@uniformdev/optimize-tracker-analytics": "canary",
+    "@uniformdev/optimize-tracker-browser": "canary",
+    "@uniformdev/optimize-tracker-react": "canary",
+    "@uniformdev/optimize-tracker-storage-indexeddb": "canary",
+    "analytics": "^0.7.13",
+    "next": "11.1.0",
+    "next-sanity": "^0.4.0",
+    "nookies": "^2.5.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@sanity/types": "^2.15.0",
+    "@types/node": "^16.7.1",
+    "@types/react": "^17.0.19",
+    "@uniformdev/cli": "canary",
+    "autoprefixer": "^10.3.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.6",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.3.2",
+    "tailwindcss": "^2.2.7",
+    "typescript": "^4.3.5"
+  }
+}
+
