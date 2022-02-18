@@ -1,0 +1,58 @@
+{
+  "name": "@uniformdev/optimize-starter-sanity-next",
+  "version": "14.1.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "run-s generate dev:next",
+    "dev:next": "next dev -p 4120",
+    "build": "run-s generate build:next",
+    "build:next": "next build",
+    "export": "next export",
+    "generate": "run-p generate:slug-page generate:intents",
+    "generate:intents": "uniform optimize manifest download --output ./lib/intentManifest.json",
+    "generate:slug-page": "node ./scripts/copySlugPage.js",
+    "start": "next start -p 4120",
+    "ci:build": "npm run generate && next build && next export",
+    "ci:build:ssr": "cross-env NEXT_USE_SSR=1 run-s generate build"
+  },
+  "dependencies": {
+    "@analytics/google-analytics": "0.5.3",
+    "@analytics/segment": "1.1.3",
+    "@babel/core": "7.17.5",
+    "@n8tb1t/use-scroll-position": "2.0.3",
+    "@types/dlv": "1.1.2",
+    "@uniformdev/cli": "canary",
+    "@uniformdev/optimize-common": "canary",
+    "@uniformdev/optimize-tracker": "canary",
+    "@uniformdev/optimize-tracker-analytics": "canary",
+    "@uniformdev/optimize-tracker-browser": "canary",
+    "@uniformdev/optimize-tracker-common": "canary",
+    "@uniformdev/optimize-tracker-react": "canary",
+    "@uniformdev/optimize-tracker-storage-indexeddb": "canary",
+    "analytics": "0.8.0",
+    "next": "12.1.0",
+    "next-sanity": "0.4.0",
+    "nookies": "2.5.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "4.2.7",
+    "@sanity/types": "2.27.0",
+    "@types/node": "16.11.25",
+    "@types/react": "17.0.39",
+    "@uniformdev/cli": "canary",
+    "autoprefixer": "10.4.2",
+    "cross-env": "7.0.3",
+    "dotenv": "16.0.0",
+    "node-fetch": "2.6.7",
+    "npm-run-all": "4.1.5",
+    "postcss": "8.4.6",
+    "postcss-preset-env": "7.4.1",
+    "prettier": "2.5.1",
+    "tailwindcss": "3.0.23",
+    "typescript": "4.5.5"
+  }
+}
+
